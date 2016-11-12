@@ -1,4 +1,7 @@
 from django.shortcuts import render
+import requests
+import json
+from collections import OrderedDict
 
 def custom_404(request):
     return render(request, 'portfolio/404.html', {}, status=404)
@@ -17,7 +20,7 @@ def index(request):
     context['TECHNICAL_KNOWLEDGE'] = _get_technical_knowledge()
     context['EDUCATIONAL_KNOWLEDGE'] = _get_educational_knowledge()
     context['LANGUAGE_SKILLS'] = _get_language_skill()
-    context['EXPERIENCE'] = _get_experience()
+    context['EXPERIENCE'] = sorted(requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/work_experience.json").json().items())
     context['EDUCATION'] = _get_education()
     context['PROJECTS'] = _get_projects()
     return render(request, 'portfolio/index.html', context)

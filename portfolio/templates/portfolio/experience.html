@@ -8,20 +8,20 @@
         {% for item in EXPERIENCE %}
             <div class="experience-block clearfix">
                 <div class="meta">
-                    <span class="year">{{ item.duration }}</span>
-                    <span class="company">{{ item.name }}</span>
+                    <span class="year">{{ item.1.duration }}</span>
+                    <span class="company">{{ item.1.name }}</span>
                 </div>
                 <div class="content">
-                    <h5>{{ item.position }}</h5>
-                    <p style="text-align: justify;">{{ item.description|safe|escape }}
+                    <h5>{{ item.1.position }}</h5>
+                    <p style="text-align: justify;">{{ item.1.description|safe|escape }}
                         {% if item.proj_name %}
-                            For more info, click <a href="{% url 'portfolio:project' item.proj_name %}" target="_blank">here.</a>
+                            For more info, click <a href="{% url 'portfolio:project' item.1.proj_name %}" target="_blank">here.</a>
                         {% endif %}
                     </p>
 
                 </div>
                 <div class="icon">
-                    <i class="{{ item.icon }}"></i>
+                    <i class="{{ item.1.icon }}"></i>
                 </div>
                 <div class="line"></div>
             </div>
