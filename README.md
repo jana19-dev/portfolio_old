@@ -3,7 +3,8 @@
 
 This wesbite was built using Python3 and Django Framework.<br>
 The site is hosted with Heroku. https://www.heroku.com <br>
-All static files are served through CloudFare CDN. https://www.cloudflare.com <hr>
+The site is cached through CloudFare CDN. https://www.cloudflare.com <br>
+All static files are stored on my Dropbox account <hr>
 
 Technologies Used:
 <ul>

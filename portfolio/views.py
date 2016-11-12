@@ -15,20 +15,22 @@ def custom_500(request):
 
 def index(request):
     context = {}
-    context['CORE_PROGRAMMING_SKILLS'] = _get_programming_skills()
-    context['WEB_FRAMEWORK_SKILLS'] = _get_framework_skills()
-    context['TECHNICAL_KNOWLEDGE'] = _get_technical_knowledge()
-    context['EDUCATIONAL_KNOWLEDGE'] = _get_educational_knowledge()
-    context['LANGUAGE_SKILLS'] = _get_language_skill()
+    context['CORE_PROGRAMMING_SKILLS'] = requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/programming_skills.json").json()["Programming"]
+    context['WEB_FRAMEWORK_SKILLS'] = requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/programming_skills.json").json()["Framework"]
+    context['TECHNICAL_KNOWLEDGE'] = requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/knowledge.json").json()["Technical_Knowledge"]
+    context['EDUCATIONAL_KNOWLEDGE'] = requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/knowledge.json").json()["Educational_Knowledge"]
+    context['LANGUAGE_SKILLS'] = requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/knowledge.json").json()["Language"]
+    context['EDUCATION'] = requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/knowledge.json").json()["Education"]
+
     context['EXPERIENCE'] = sorted(requests.get("https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/work_experience.json").json().items())
-    context['EDUCATION'] = _get_education()
+
     context['PROJECTS'] = _get_projects()
     return render(request, 'portfolio/index.html', context)
 
 
 def project(request, project_name):
     context = {}
-    context['PROJECT'] = [item for item in _get_projects() if item['id']==project_name][0]
+    context['PROJECT'] = [item for item in _get_projects() if item['id'] == project_name][0]
     pos = _get_projects().index(context['PROJECT'])
     if pos == len(_get_projects())-1:
         context['NEXT'] = False
@@ -40,88 +42,6 @@ def project(request, project_name):
         context['PREV'] = _get_projects()[pos - 1]
 
     return render(request, 'portfolio/single_project.html', context)
-
-
-
-def _get_experience():
-    return [
-        {'name': 'LionKingLimo',
-         'duration': '2016 MAY - 2016 JUN',
-         'position': 'WEB DEVELOPER',
-         'description': 'Created a website for a Taxi/Limo company. Features responsive content, online booking and '
-                        'newsletter enrollment. The website was created using plain HTML with CSS and PHP for contact '
-                        'forms.',
-         'icon': 'ion-network',
-         'proj_name': 'lionkinglimo',},
-
-        {'name': 'INDIVIDUAL',
-         'duration': '2010 OCT - CURRENT',
-         'position': 'PRIVATE TUTOR',
-         'description': 'Conducting private classes for students in Mathematics. Students from Grades 6 to University '
-                        'Level. Helping with homework, assignments and teaching course material.',
-         'icon': 'ion-ios-book'},
-
-        {'name': 'Zodus Jobs',
-         'duration': '2015 JUN - 2016 JUN',
-         'position': 'FOUNDER & WEB DEVELOPER (DISCONTINUED)',
-         'description': 'Created a Job Board website. Features candidate and employer dashboards, job posting & resume '
-                        'pricing plans with front-end job & resume submissions. The website was created using WordPress. '
-                        'The project was discontinued on Jun 2016. Website layouts and functionality can be found under '
-                        '"projects" section.',
-         'icon': 'ion-flag',
-         'proj_name': 'zodus'},
-
-        {'name': 'THE HOUSE OF PIZZERIA',
-         'duration': '2015 MAR - 2015 MAY',
-         'position': 'WEB DEVELOPER & GRAPHIC DESIGNER (DISCONTINUED)',
-         'description': 'Created a website for a restaurant. Features responsive content, online ordering system, '
-                        'online reservations, interactive food menu and carrousel gallery. The website was created '
-                        'using WordPress. I designed the restaurant logo and the food menu board. Also created fliers'
-                        ' and banners using Adobe Fireworks. The project was discontinued on Jan 2016. Website layouts '
-                        'and functionality can be found under "projects" section.',
-         'icon': 'ion-pizza',
-         'proj_name': 'pizzeria'},
-
-        {'name': 'HITECH BAY',
-         'duration': '2014 MAY - 2015 JAN',
-         'position': 'ONLINE SALES, COMPUTER REPAIR TECHNICIAN, WEB DEVELOPER',
-         'description': 'Conducting online sales on e-commerce websites such as Amazon and Ebay. Processing online '
-                        'orders and handling shipping. Maintaining store website and Ebay shop templates. Debugging, '
-                        'upgrading and repairing computer systems from desktops to laptops. Taking pictures of products'
-                        ' and processing through image editing software(Adobe Fireworks). Handling customer inquiries '
-                        'in person and via online. During my stay, I introduced an order management system called '
-                        'Lynn Works that integrates all selling platforms under a single management unit. I also '
-                        'created a new Ebay HTML store template for the company.',
-         'icon': 'ion-wrench',
-         'proj_name': 'hitech'},
-
-        {'name': 'UNIVERSITY OF TORONTO',
-         'duration': '2014 SEP - 2014 DEC',
-         'position': 'VOLUNTEER EXPERIENCE - NOTE TAKING',
-         'description': 'Contributed to the Accessibility Services Note-Taking Program during my studies. As a '
-                        'volunteer note-taker, I attend classes on a regular basis and continue to take lecture notes '
-                        'and upload them to the respective department. For more info about the program, click  '
-                        'at <a href="http://www.accessibility.utoronto.ca/volunteer-note-taking.htm" target="_blank">here.</a>',
-         'icon': 'ion-edit'},
-
-        {'name': 'NORTH YORK SENIOR CENTRE',
-         'duration': '2013 SEP - 2013 DEC',
-         'position': 'VOLUNTEER EXPERIENCE - SOFTWARE DEVELOPER',
-         'description': 'Developed an online registration service for the North York Senior’s Centre, with both user '
-                        'and administrative functionalities as a part of a group project during university. '
-                        'Implementing agile techniques with extensive documentation of source code, design decisions, '
-                        'test strategies, team workflow, and client communication. We used Ruby on Rails as our '
-                        'main programming language, HTML, Bootstrap and Agile Programming.',
-         'icon': 'ion-code-working',
-         'proj_name': 'nysc'},
-
-        {'name': 'TIM HORTONS',
-         'duration': '2010 NOV - 2011 APR',
-         'position': 'BAKER & CASHIER',
-         'description': 'Responsible for baking a variety of products. Interact with customers and handle their concerns '
-                        'effectively. Handling cash register transactions. Provide a high standard of customer service.',
-         'icon': 'ion-coffee'},
-    ]
 
 
 def _get_projects():
@@ -228,45 +148,3 @@ def _get_projects():
          'skills': 'PYTHON, PAIR PROGRAMMING, TEAM WORK'},
 
     ]
-
-
-def _get_programming_skills():
-    return  [{'name':'Python', 'value': 90}, {'name': 'PHP', 'value': 85}, {'name': 'Haskell', 'value': 85},
-             {'name': 'Racket', 'value': 85}, {'name': 'PROLOG', 'value': 80},{'name': 'Java', 'value': 85},
-             {'name': 'Ruby', 'value': 80}, {'name': 'C', 'value': 80}, {'name': 'BASH', 'value': 80},
-             {'name': 'SQL', 'value': 75}, ]
-
-
-def _get_framework_skills():
-    return [{'name':'HTML & CSS', 'value': 95}, {'name':'PHP Codeigniter', 'value': 90},
-            {'name':'Python Django', 'value': 90}, {'name':'Ruby on Rails', 'value': 85},
-            {'name':'WordPress', 'value': 90}, {'name':'JQUERY', 'value': 80}, {'name':'Javascript', 'value': 80},
-            {'name':'MYSQL', 'value': 75},{'name':'Node JS (learning)', 'value': 50}, {'name':'Angular JS (learning)', 'value': 50}, ]
-
-
-
-def _get_technical_knowledge():
-    return ['INSTALL AND CONFIGURE','HARDWARE & NETWORKING','WEB USABILITY', 'LOGO DESIGN', 'MS OFFICE ENVIRONMENT',
-            'SEARCH ANALYTICS', 'WINDOWS OPERATING SYSTEM', 'LINUX OPERATING SYSTEM','MOBILE APP DESIGN', 'PHOTOGRAPHY',
-            'GRAPHICAL DESIGN', 'WEB DEVELOPMENT', 'SEO OPTIMIZATION', 'E-COMMERCE']
-
-
-def _get_educational_knowledge():
-    return  ['COMPUTER NETWORK SYSTEMS', 'DATABASES', 'MACHINE LEARNING', 'DATA MINING', 'SOFTWARE TESTING',
-             'NATURAL LANGUAGE', 'OPERATING SYSTEMS', 'AGILE, SCRUM DEVELOPMENT', 'SOFTWARE ENGINEERING',
-             'ECONOMICS & SOCIAL NETWORKS', 'NUMERICAL METHODS', 'ALGORITHM DESIGN & ANALYSIS',
-             'COMPUTER ORGANIZATION', 'STATISTICAL SCIENCE']
-
-
-def _get_language_skill():
-    return [{'name': 'English Experienced', 'value': 99},
-            {'name': 'Tamil Experienced', 'value': 99},
-            {'name': 'Sinhala Intermediate', 'value': 65}]
-
-def _get_education():
-    return [{'name': "S. THOMAS' COLLEGE", 'type': 'HIGH SCHOOL', 'year': '1997 - 2010',
-             'link': 'http://www.stcmount.edu.lk/'},
-            {'name': "TURNKEY IT TRAINING", 'type': 'DIPLOMA IN COMPUTER HARDWARE & NETWORKING', 'year': '2006 - 2007',
-             'link': 'http://www.turnkey.lk/'},
-            {'name': "UNIVERSITY OF TORONTO", 'type': 'BSc in Computer Science', 'year': '2011 - 2016',
-             'link': 'http://www.utoronto.ca/'},]
