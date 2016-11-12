@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<!-- Experience -->
+<section id="section3">
+    <div class="container">
+        <h2>6 Years Experience</h2>
+        <div class="experience-timeline">
+        {% for item in EXPERIENCE %}
+            <div class="experience-block clearfix">
+                <div class="meta">
+                    <span class="year">{{ item.duration }}</span>
+                    <span class="company">{{ item.name }}</span>
+                </div>
+                <div class="content">
+                    <h5>{{ item.position }}</h5>
+                    <p style="text-align: justify;">{{ item.description|safe|escape }}
+                        {% if item.proj_name %}
+                            For more info, click <a href="{% url 'portfolio:project' item.proj_name %}" target="_blank">here.</a>
+                        {% endif %}
+                    </p>
+
+                </div>
+                <div class="icon">
+                    <i class="{{ item.icon }}"></i>
+                </div>
+                <div class="line"></div>
+            </div>
+        {% endfor %}
+        </div> <!-- end .experience-timeline -->
+    </div> <!-- end .container -->
+</section> <!-- end #section3 -->

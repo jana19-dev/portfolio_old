@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<!-- Portfolio -->
+<section id="section5">
+    <div class="container">
+        <h2>Portfolio</h2>
+        <div class="portfolio-wrapper">
+            <div id="portfolio-filters" class="portfolio-filters">
+                <button class="button solid-button white-purple small" data-filter="*">Show All</button>
+                <button class="button solid-button white-purple small" data-filter=".applications">Dynamic Websites</button>
+                <button class="button solid-button white-purple small" data-filter=".websites">Static Websites</button>
+                <button class="button solid-button white-purple small" data-filter=".game">Games</button>
+                <button class="button solid-button white-purple small" data-filter=".design">Graphic Design</button>
+            </div>
+            <div id="portfolio" class="portfolio">
+                {% for item in PROJECTS %}
+                    <div class="{{ item.class }}">
+                        <img src="{% static 'portfolio/images/front_cover' %}/{{ item.id }}.png" alt="{{ item.name }}" class="img-responsive">
+                        <a href="{% url 'portfolio:project' item.id %}" class="overlay">
+                            <div class="background"></div>
+                            <div class="meta">
+                                <span class="title">{{ item.name }}</span>
+                                <span class="category">{{ item.subtitle }}</span>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div> <!-- end .portfolio -->
+        </div> <!-- end .portfolio-wrapper -->
+    </div> <!-- end .container -->
+</section> <!-- end #section5 -->

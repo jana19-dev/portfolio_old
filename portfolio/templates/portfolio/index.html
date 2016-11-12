@@ -1,0 +1,57 @@
+{% extends 'portfolio/base.html' %}
+{% load staticfiles %}
+
+
+{% block headernavigation %}
+    <ul class="list-unstyled">
+        <li class="active"><a href="#section1">Home</a> </li>
+        <li><a href="#section2">Skill</a> </li>
+        <li><a href="#section3">Experience</a></li>
+        <li><a href="#section4">Education</a> </li>
+        <li><a href="#section5">Projects</a> </li>
+        <li><a href="#section6">Contact</a> </li>
+    </ul>
+ {% endblock %}
+
+{% block available %}
+    <a href="#section6" class="available"><i class="ion-ios-email-outline"></i><span>Available For Freelance</span></a>
+ {% endblock %}
+
+{% block sectionnavigation %}
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <nav class="section1">
+            <a href="#section2" class="forward"><i class="md md-chevron-right"></i></a>
+            <a href="#section1" class="backward"><i class="md md-chevron-left"></i></a>
+        </nav>
+    </div> <!-- end .section-nav -->
+ {% endblock %}
+
+{% block homecontent %}
+    {% include 'portfolio/home.html' %}
+{% endblock %}
+
+
+{% block skillcontent %}
+    {% include 'portfolio/skill.html' %}
+{% endblock %}
+
+
+{% block experiencecontent %}
+    {% include 'portfolio/experience.html' %}
+{% endblock %}
+
+
+{% block educationcontent %}
+    {% include 'portfolio/education.html' %}
+{% endblock %}
+
+
+{% block projectcontent %}
+    {% include 'portfolio/projects.html' %}
+ {% endblock %}
+
+
+{% block contactcontent %}
+    {% include 'portfolio/contact.html' %}
+{% endblock %}

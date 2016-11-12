@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SUDOKU</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://dl.dropboxusercontent.com/u/11206072/jana19/static/sudoku/css/style.css" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+
+    <h1 class="text-center">SUDOKU Game & Solver</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="text-center">Difficulty Level: <strong>{{ level }}</strong></h2>
+                {% if not PLAYING %}
+                    {% if WON %}<h3>HURRAY! YOU WON</h3> {% endif %}
+                    {% if not WON %}<h3>SORRY.. TRY AGAIN</h3> {% endif %}
+                {% endif %}
+                <div class="container">
+                 <form action="{% url 'sudoku:index' %}" method="post" id="check_solution" autocomplete="off">
+                    {% csrf_token %}
+                  <table id="grid">
+
+                        <tr>
+                            <td>{{ form.cell0 }}</td>
+                            <td>{{ form.cell1 }}</td>
+                            <td>{{ form.cell2 }}</td>
+                            <td>{{ form.cell3 }}</td>
+                            <td>{{ form.cell4 }}</td>
+                            <td>{{ form.cell5 }}</td>
+                            <td>{{ form.cell6 }}</td>
+                            <td>{{ form.cell7 }}</td>
+                            <td>{{ form.cell8 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell9 }}</td>
+                            <td>{{ form.cell10 }}</td>
+                            <td>{{ form.cell11 }}</td>
+                            <td>{{ form.cell12 }}</td>
+                            <td>{{ form.cell13 }}</td>
+                            <td>{{ form.cell14 }}</td>
+                            <td>{{ form.cell15 }}</td>
+                            <td>{{ form.cell16 }}</td>
+                            <td>{{ form.cell17 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell18 }}</td>
+                            <td>{{ form.cell19 }}</td>
+                            <td>{{ form.cell20 }}</td>
+                            <td>{{ form.cell21 }}</td>
+                            <td>{{ form.cell22 }}</td>
+                            <td>{{ form.cell23 }}</td>
+                            <td>{{ form.cell24 }}</td>
+                            <td>{{ form.cell25 }}</td>
+                            <td>{{ form.cell26 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell27 }}</td>
+                            <td>{{ form.cell28 }}</td>
+                            <td>{{ form.cell29 }}</td>
+                            <td>{{ form.cell30 }}</td>
+                            <td>{{ form.cell31 }}</td>
+                            <td>{{ form.cell32 }}</td>
+                            <td>{{ form.cell33 }}</td>
+                            <td>{{ form.cell34 }}</td>
+                            <td>{{ form.cell35 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell36 }}</td>
+                            <td>{{ form.cell37 }}</td>
+                            <td>{{ form.cell38 }}</td>
+                            <td>{{ form.cell39 }}</td>
+                            <td>{{ form.cell40 }}</td>
+                            <td>{{ form.cell41 }}</td>
+                            <td>{{ form.cell42 }}</td>
+                            <td>{{ form.cell43 }}</td>
+                            <td>{{ form.cell44 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell45 }}</td>
+                            <td>{{ form.cell46 }}</td>
+                            <td>{{ form.cell47 }}</td>
+                            <td>{{ form.cell48 }}</td>
+                            <td>{{ form.cell49 }}</td>
+                            <td>{{ form.cell50 }}</td>
+                            <td>{{ form.cell51 }}</td>
+                            <td>{{ form.cell52 }}</td>
+                            <td>{{ form.cell53 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell54 }}</td>
+                            <td>{{ form.cell55 }}</td>
+                            <td>{{ form.cell56 }}</td>
+                            <td>{{ form.cell57 }}</td>
+                            <td>{{ form.cell58 }}</td>
+                            <td>{{ form.cell59 }}</td>
+                            <td>{{ form.cell60 }}</td>
+                            <td>{{ form.cell61 }}</td>
+                            <td>{{ form.cell62 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell63 }}</td>
+                            <td>{{ form.cell64 }}</td>
+                            <td>{{ form.cell65 }}</td>
+                            <td>{{ form.cell66 }}</td>
+                            <td>{{ form.cell67 }}</td>
+                            <td>{{ form.cell68 }}</td>
+                            <td>{{ form.cell69 }}</td>
+                            <td>{{ form.cell70 }}</td>
+                            <td>{{ form.cell71 }}</td>
+                         </tr>
+
+                        <tr>
+                            <td>{{ form.cell72 }}</td>
+                            <td>{{ form.cell73 }}</td>
+                            <td>{{ form.cell74 }}</td>
+                            <td>{{ form.cell75 }}</td>
+                            <td>{{ form.cell76 }}</td>
+                            <td>{{ form.cell77 }}</td>
+                            <td>{{ form.cell78 }}</td>
+                            <td>{{ form.cell79 }}</td>
+                            <td>{{ form.cell80 }}</td>
+                         </tr>
+
+                  </table>
+                  <button type="submit" class="btn btn-success btn-lg" value='Submit' title="check_solution">Check Solution</button>
+                 </form>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+
+            </div>
+
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+
+  </body>
+</html>

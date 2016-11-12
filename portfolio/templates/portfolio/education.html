@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!-- Education -->
+<section id="section4">
+    <div class="container">
+        <h2>Educational Value</h2>
+        <div class="education clearfix">
+            {% for item in EDUCATION %}
+            <div class="item">
+                <div class="marker"></div>
+                <div class="content">
+                    <span><a href="{{ item.link }}" target="_blank">{{ item.name }}</a></span>
+                    <h4>{{ item.type }}</h4>
+                </div>
+                <div class="year">{{ item.year }}</div>
+            </div>
+            {% endfor %}
+            <div class="line"></div>
+        </div> <!-- end .education -->
+
+        <h2>Hobbies & Interest</h2>
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-1 col-xs-6">
+                <div class="icon-box"> <div class="icon"><i class="ion-easel"></i> </div>  <h6>Web Research</h6> </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="icon-box"> <div class="icon"><i class="ion-ios-camera-outline"></i> </div> <h6>Movies</h6> </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="icon-box"> <div class="icon"><i class="ion-plane"></i> </div> <h6>Travelling</h6> </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="icon-box"> <div class="icon"><i class="ion-pizza"></i> </div> <h6>Food</h6> </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+                <div class="icon-box"> <div class="icon"><i class="ion-ios-musical-notes"></i> </div> <h6>Music</h6> </div>
+            </div>
+        </div>
+    </div> <!-- end .container -->
+</section> <!-- end #section4 -->

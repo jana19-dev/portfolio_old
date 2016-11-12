@@ -1,0 +1,76 @@
+{% load staticfiles %}
+
+<!-- Contact -->
+<section id="section6">
+    <div class="container">
+        <h2>Get In Touch With Me</h2>
+        <div class="row">
+            <div class="col-sm-5">
+                <h5>Contact Address</h5>
+                <ul class="list-icons list-unstyled">
+                    <li><i class="ion-ios-location-outline"></i>Markham, Scarborough, Toronto</li>
+                    <li><i class="ion-iphone"></i>Phone: +1 647-868-2341</li>
+                    <li><i class="ion-ios-email-outline"></i>Email: <a href="mailto:mail@jana19.com">jana.stc@gmail.com</a> </li>
+                </ul>
+
+                <div class="spacer"></div>
+
+                <div class="social-icons">
+                    <a target="_blank" href="https://www.facebook.com/Jana.JR.19" class="social-icon"><i class="fa fa-facebook"></i></a>
+                    <a target="_blank" href="https://twitter.com/janastc19" class="social-icon"><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" href="https://plus.google.com/+JanaRajkumar" class="social-icon"><i class="fa fa-google-plus"></i></a>
+                    <a target="_blank" href="http://lnkd.in/m8NYfn" class="social-icon"><i class="fa fa-linkedin"></i></a>
+                </div> <!-- end .social-icons -->
+
+                <div class="spacer"></div>
+            </div>
+
+            <div class="col-sm-7">
+                <h5>Contact Form</h5>
+                <form action="https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/contact.php" method="post" class="form-horizontal contact-form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="contact-name" name="contact-name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="contact-email" name="contact-email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Message</label>
+                        <div class="col-sm-10">
+                            <textarea name="contact-message" class="contact-message" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="submit" class="button solid-button purple">Send Message</button>
+                        </div>
+                    </div>
+
+                    <div class="contact-loading alert alert-info form-alert">
+                        <span class="message">Loading...</span>
+                        <button type="button" class="close" data-hide="alert" aria-label="Close"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="contact-success alert alert-success form-alert">
+                        <span class="message">Success!</span>
+                        <button type="button" class="close" data-hide="alert" aria-label="Close"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="contact-error alert alert-danger form-alert">
+                        <span class="message">Error!</span>
+                        <button type="button" class="close" data-hide="alert" aria-label="Close"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </form> <!-- end contact-form -->
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end .container -->
+    <br/><br/><br/>
+</section> <!-- end #section6 -->
+
