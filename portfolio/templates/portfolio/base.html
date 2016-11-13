@@ -177,7 +177,7 @@
             {% block educationcontent %} {% endblock %}
             {% block projectcontent %} {% endblock %}
             {% block contactcontent %} {% endblock %}
-            {% block singleworkcontent %} {% endblock %}
+            {% block socialcontent %} {% endblock %}
         </div> <!-- end .sections-wrapper -->
     </div> <!-- end .sections -->
 
@@ -200,6 +200,7 @@
                             <a target="_blank" href="https://plus.google.com/+JanaRajkumar" class="social-icon"><i class="fa fa-google-plus"></i></a>
                             <a target="_blank" href="http://ca.linkedin.com/in/jana19?trk=shareTw" class="social-icon"><i class="fa fa-linkedin"></i></a>
                             <a target="_blank" href="https://github.com/jana-uoft" class="social-icon"><i class="fa fa-github"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/jana_._._._" class="social-icon"><i class="fa fa-instagram"></i></a>
                         </div> <!-- end .social-icons -->
                     </div>
 
@@ -236,7 +237,11 @@
     <script src="https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/js/imagesloaded.pkgd.min.js"></script>
     <!-- Scripts.js -->
     <script src="https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/js/scripts.js"></script>
-
+    <!-- Scripts.js -->
+    <script type="text/javascript">
+        var allInstaImages = '{{INSTA_PHOTOS|safe|escapejs}}';
+        $('#photos_insta').append(allInstaImages);
+    </script>
 </body>
 
 </html>

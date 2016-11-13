@@ -18,6 +18,11 @@ def index(request):
     KNOWLEDGE = requests.get(static_url+"knowledge.json").json()
     EXPERIENCE = requests.get(static_url+"work_experience.json").json()
     PROJECT = requests.get(static_url+"projects.json").json()
+    INSTAGRAM = requests.get("https://api.instagram.com/v1/users/self/media/recent/?access_token=508727293.1677ed0.69d96553324f4468917af711a368260b&count=16").json()
+    INSTA_PHOTOS = ""
+    for item in (INSTAGRAM["data"]):
+        INSTA_PHOTOS += '<img src="'+item["images"]["standard_resolution"]["url"]+'" alt="'+item["caption"]["text"]+'">'
+    
 
     context = {}
     context['GENERAL'] = requests.get(static_url+"general_info.json").json()
@@ -34,22 +39,6 @@ def index(request):
         context['FILTERS'] += [x.upper() for x in item["skills"].strip().split(' ')]
     context['FILTERS'] = sorted(list(set(context['FILTERS'])))
 
+    context["INSTA_PHOTOS"] = INSTA_PHOTOS
+
     return render(request, 'portfolio/index.html', context)
-
-
-def project(request, project_name):
-    context = {}
-    static_url = "https://dl.dropboxusercontent.com/u/11206072/jana19/static/portfolio/"
-    PROJECTS = sorted(requests.get(static_url+"projects.json").json().items())
-    context['PROJECT'] = [item for item in PROJECTS if item[1]['id'] == project_name][0]
-    pos = PROJECTS.index(context['PROJECT'])
-    if pos == len(PROJECTS)-1:
-        context['NEXT'] = False
-    else:
-        context['NEXT'] = PROJECTS[pos + 1]
-    if pos == 0:
-        context['PREV'] = False
-    else:
-        context['PREV'] = PROJECTS[pos - 1]
-
-    return render(request, 'portfolio/single_project.html', context)
