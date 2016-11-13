@@ -20,6 +20,7 @@ def index(request):
     PROJECT = requests.get(static_url+"projects.json").json()
 
     context = {}
+    context['GENERAL'] = requests.get(static_url+"general_info.json").json()
     context['CORE_PROGRAMMING_SKILLS'] = SKILLS["Programming"]
     context['WEB_FRAMEWORK_SKILLS'] = SKILLS["Framework"]
     context['TECHNICAL_KNOWLEDGE'] = KNOWLEDGE["Technical_Knowledge"]
