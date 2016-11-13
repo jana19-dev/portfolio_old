@@ -30,7 +30,7 @@ def index(request):
     context['PROJECTS'] = sorted(PROJECT.items())
     context['FILTERS'] = []
     for item in PROJECT.values():
-        context['FILTERS'] += [x.upper() for x in item["skills"].strip().replace(',', '').split(' ')]
+        context['FILTERS'] += [x.upper() for x in item["skills"].strip().split(' ')]
     context['FILTERS'] = sorted(list(set(context['FILTERS'])))
 
     return render(request, 'portfolio/index.html', context)
