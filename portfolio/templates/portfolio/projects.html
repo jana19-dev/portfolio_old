@@ -49,11 +49,14 @@
                     <p style="text-align: justify; word-wrap: break-word;">{{ item.1.description }} </p>
                     <div class="portfolio-meta">  <span>Date:</span> {{ item.1.duration }}  </div>
                     <div class="portfolio-meta">  <span>Skills:</span>  {{ item.1.skills }}  </div>
+                    <p>
                     {% if item.1.website %}
-                        <p><a target="_blank" href="{{ item.1.website }}" class="button solid-button purple">Visit Website</a></p>
-                    {% else %}
-                        <p></p>
+                        <a target="_blank" href="{{ item.1.website }}" class="button solid-button purple">Visit Website</a>
                     {% endif %}
+                    {% if item.1.github %}
+                        <a target="_blank" href="{{ item.1.github }}" class="button solid-button purple">View GitHub</a>
+                    {% endif %}
+                    </p>
                 </div>
                         
                 {% for pic in item.1.pics %}
