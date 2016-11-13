@@ -25,24 +25,24 @@
             <div class="col-sm-4">
                 <p class="button-row portfolio-button-row text-center">
                     {% if PREV %}
-                        <a href="{% url 'portfolio:project' PREV.id %}" class="button solid-button purple">Previous</a>
+                        <a href="{% url 'portfolio:project' PREV.1.id %}" class="button solid-button purple">Previous</a>
                     {% else %}
                         <a href="#" class="button solid-button white">Previous</a>
                     {% endif %}
                     {% if NEXT %}
-                        <a href="{% url 'portfolio:project' NEXT.id %}" class="button solid-button purple">Next</a>
+                        <a href="{% url 'portfolio:project' NEXT.1.id %}" class="button solid-button purple">Next</a>
                     {% else %}
                         <a href="#" class="button solid-button white">Next</a>
                     {% endif %}
                 </p>
 
                 <div class="portfolio-details">
-                    <h2>{{ PROJECT.name }}</h2>
-                    <p style="text-align: justify;">{{ PROJECT.description }} </p>
-                    <div class="portfolio-meta">  <span>Date:</span> {{ PROJECT.duration }}  </div>
-                    <div class="portfolio-meta">  <span>Skills:</span>  {{ PROJECT.skills }}  </div>
-                    {% if PROJECT.website %}
-                        <p><a target="_blank" href="{{ PROJECT.website }}" class="button solid-button purple">Visit Website</a></p>
+                    <h2>{{ PROJECT.1.name }}</h2>
+                    <p style="text-align: justify;">{{ PROJECT.1.description }} </p>
+                    <div class="portfolio-meta">  <span>Date:</span> {{ PROJECT.1.duration }}  </div>
+                    <div class="portfolio-meta">  <span>Skills:</span>  {{ PROJECT.1.skills }}  </div>
+                    {% if PROJECT.1.website %}
+                        <p><a target="_blank" href="{{ PROJECT.1.website }}" class="button solid-button purple">Visit Website</a></p>
                     {% else %}
                         <p></p>
                     {% endif %}
@@ -52,8 +52,8 @@
             <div class="col-sm-8">
                 <br/><br/><br/>
                 <div class="portfolio-slider owl-carousel">
-                    {% for pic in PROJECT.pics %}
-                        <div><img src="{{ pic }}" alt="{{ PROJECT.name }}" class="img-responsive"></div>
+                    {% for pic in PROJECT.1.pics %}
+                        <div><img src="{{ pic }}" alt="{{ PROJECT.1.name }}" class="img-responsive"></div>
                     {% endfor %}
                 </div> <!-- end .portfolio-slider -->
             </div> <!-- end .col-sm-8 -->
